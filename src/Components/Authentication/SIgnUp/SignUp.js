@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../UseContext/UseContext";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const SignUp = () => {
   const { CreateUser, UpdateUserProfile, emailVerification } =
     useContext(AuthContext);
-    // useing toast and modal 
+  // useing toast and modal
   const Swal = require("sweetalert2");
-  const notify = () => toast.success("A verification link has been sent to your email account");
+  const notify = () =>
+    toast.success("A verification link has been sent to your email account");
   const FormSubmit = (event) => {
     event.preventDefault();
     const field = event.target;
@@ -30,7 +31,8 @@ const SignUp = () => {
         .then((data) => {
           userProfile(fullName);
           Swal.fire("Good job!", "Successfully Sign up !", "success");
-          emailVerify()
+          emailVerify();
+          event.target.reset();
         })
         .catch((error) => {
           if (
@@ -45,14 +47,12 @@ const SignUp = () => {
             confirmButtonText: "Ok",
           });
         });
-      event.target.reset();
     }
-   const emailVerify = () => {
-    emailVerification()
-    .then((data) => {
-      notify();
-    })
-   }
+    const emailVerify = () => {
+      emailVerification().then((data) => {
+        notify();
+      });
+    };
     // Updating user profile
     const userProfile = (fullName) => {
       const profile = {
@@ -65,7 +65,7 @@ const SignUp = () => {
   };
   return (
     <>
-    <ToastContainer />
+      <ToastContainer />
       <div className="form-container sm:px-4 py-2.5 px-2">
         <h1 className="text-center text-2xl pt-2.5 pb-1.5">Sign Up</h1>
         <form onSubmit={FormSubmit} className="container mx-auto ">

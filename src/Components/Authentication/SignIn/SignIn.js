@@ -4,7 +4,12 @@ import { AuthContext } from "../../../UseContext/UseContext";
 
 const SignIn = () => {
   const Swal = require("sweetalert2");
-  const { SignIn } = useContext(AuthContext);
+  const { SignIn, googleSignIn } = useContext(AuthContext);
+  const signInWithGoogle = () => {
+    googleSignIn().then((data) => {
+      Swal.fire("Good job!", "Successfully Sign in !", "success");
+    });
+  };
   const FormSubmit = (event) => {
     event.preventDefault();
     const field = event.target;
@@ -14,13 +19,12 @@ const SignIn = () => {
     SignIn(email, password)
       .then((data) => {
         Swal.fire("Good job!", "Successfully Sign in !", "success");
-        
+        event.target.reset();
       })
       .catch((error) => {
         if (error.message === "Firebase: Error (auth/wrong-password).") {
           error.message = "Your entered password is wrong";
-        }
-        else if (error.message === "Firebase: Error (auth/user-not-found).") {
+        } else if (error.message === "Firebase: Error (auth/user-not-found).") {
           error.message = "Please Provide a valid email";
         }
         Swal.fire({
@@ -30,7 +34,7 @@ const SignIn = () => {
           confirmButtonText: "Ok",
         });
       });
-      event.target.reset();
+   
   };
   return (
     <>
@@ -91,6 +95,15 @@ const SignIn = () => {
             Sign In
           </button>
         </form>
+        <div className="mt-6">
+          <button onClick={signInWithGoogle} className="flex gap-5 text-lg items-center text-white bg-slate-500 hover:bg-slate-700  rounded-full px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <img
+              src="https://img.icons8.com/fluency/46/google-logo.png"
+              alt=""
+            />
+            Google Login
+          </button>
+        </div>
       </div>
     </>
   );
