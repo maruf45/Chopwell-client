@@ -2,11 +2,15 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../UseContext/UseContext";
 const SignUp = () => {
-  const { CreateUser } = useContext(AuthContext);
+  const { CreateUser, UpdateUserProfile, emailVerification } =
+    useContext(AuthContext);
   const Swal = require("sweetalert2");
   const FormSubmit = (event) => {
     event.preventDefault();
     const field = event.target;
+    const name = field.name.value;
+    const last_name = field.last_name.value;
+    const fullName = `${name} ${last_name}`;
     const email = field.email.value;
     const password = field.password.value;
     const confirm_password = field.confirm_password.value;
@@ -20,7 +24,8 @@ const SignUp = () => {
     } else {
       CreateUser(email, password)
         .then((data) => {
-          Swal.fire("Good job!", "Successfully Sing up !", "success");
+          userProfile(fullName);
+          Swal.fire("Good job!", "Successfully Sign up !", "success");
         })
         .catch((error) => {
           if (
@@ -35,7 +40,25 @@ const SignUp = () => {
             confirmButtonText: "Ok",
           });
         });
+      event.target.reset();
     }
+    emailVerification().then((data) => {
+      Swal.fire({
+        title: "Send Email",
+        text: "Verify your email address for ChopWell",
+        icon: "success",
+        confirmButtonText: "Ok",
+      });
+    });
+    // Updating user profile
+    const userProfile = (fullName) => {
+      const profile = {
+        displayName: fullName,
+      };
+      UpdateUserProfile(profile)
+        .then((data) => {})
+        .catch((error) => {});
+    };
   };
   return (
     <>
@@ -72,7 +95,6 @@ const SignUp = () => {
                 name="last_name"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Rahman"
-                required
               />
             </div>
           </div>
