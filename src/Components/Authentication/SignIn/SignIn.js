@@ -34,12 +34,11 @@ const SignIn = () => {
           confirmButtonText: "Ok",
         });
       });
-   
   };
   return (
     <>
-      <div className="form-container sm:px-4 py-2.5 px-2">
-        <form onSubmit={FormSubmit} className="container mx-auto ">
+      <div className="container mx-auto sm:px-4 py-2.5 px-2">
+        <form onSubmit={FormSubmit}>
           <h1 className="text-center text-2xl pt-2.5 pb-1.5">Sign In</h1>
           <div className="grid gap-6 mb-6 md:grid-cols-2"></div>
           <div className="mb-6">
@@ -96,7 +95,10 @@ const SignIn = () => {
           </button>
         </form>
         <div className="mt-6">
-          <button onClick={signInWithGoogle} className="flex gap-5 text-lg items-center text-white bg-slate-500 hover:bg-slate-700  rounded-full px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+          <button
+            onClick={signInWithGoogle}
+            className="flex gap-5 text-lg items-center text-white bg-slate-500 hover:bg-slate-700  rounded-full px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
             <img
               src="https://img.icons8.com/fluency/46/google-logo.png"
               alt=""
