@@ -1,7 +1,43 @@
 import React from "react";
 import { Link } from "react-router-dom";
+const Swal = require("sweetalert2");
 
 const SignIn = () => {
+    const FormSubmit = (event) => {
+        event.preventDefault();
+        const field = event.target;
+        const email = field.email.value;
+        const password = field.password.value;
+        const confirm_password = field.confirm_password.value;
+        if (password !== confirm_password) {
+          Swal.fire({
+            title: "Error!",
+            text: "Password not match try again",
+            icon: "error",
+            confirmButtonText: "Ok",
+          });
+        } else {
+          CreateUser(email, password)
+          .then(data => {
+            Swal.fire(
+                'Good job!',
+                'Successfully Sing up !',
+                'success'
+              )
+          })
+          .catch(error => {
+            if(error.message === 'Firebase: Error (auth/email-already-in-use).'){
+                error.message = 'Email is Already use. Try another email'
+            }
+            Swal.fire({
+                title: "Error!",
+                text: error.message,
+                icon: "error",
+                confirmButtonText: "Ok",
+              });
+        })
+        }
+      };
   return (
     <>
     <div className="form-container sm:px-4 py-2.5 px-2">
@@ -21,7 +57,7 @@ const SignIn = () => {
             id="email"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="john.doe@company.com"
-            required=""
+            required
           />
         </div>
         <div className="mb-6">
@@ -36,7 +72,7 @@ const SignIn = () => {
             id="password"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="•••••••••"
-            required=""
+            required
           />
         </div>
         <div className="flex items-start mb-6">
