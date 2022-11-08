@@ -3,9 +3,9 @@ import React from "react";
 const Loader = () => {
   return (
     <>
-      <div role="status" className='grid content-center h-[100vh]'>
+      <div role="status" className='grid items-center justify-center h-[70vh]'>
         <svg
-          class="inline mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-gray-600 dark:fill-gray-300"
+          className="inline mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-gray-600 dark:fill-gray-300"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +19,7 @@ const Loader = () => {
             fill="currentFill"
           />
         </svg>
-        <span class="sr-only">Loading...</span>
+        <span className="sr-only">Loading...</span>
       </div>
     </>
   );

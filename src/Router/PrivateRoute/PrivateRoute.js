@@ -4,13 +4,14 @@ import Loader from '../../Components/Loader/Loader';
 import { AuthContext } from '../../UseContext/UseContext';
 
 const PrivateRoute = ({children}) => {
-    const {user, loader} = useContext(AuthContext);
+    const {user, loading} = useContext(AuthContext);
+    const location = useLocation();
 
-    const location = useLocation()
-    if(loader) {
+    if(loading) {
         return <Loader/>
     }
-    if(user?.uid){
+    
+    if(user && user?.uid){
         return children
     }
     return <Navigate to={'/sign-in'} state={{from: location}} replace/>
