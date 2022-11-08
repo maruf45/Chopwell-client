@@ -10,6 +10,7 @@ const SignUp = () => {
   const Swal = require("sweetalert2");
   const notify = () =>
     toast.success("A verification link has been sent to your email account");
+
   const FormSubmit = (event) => {
     event.preventDefault();
     const field = event.target;
@@ -19,6 +20,7 @@ const SignUp = () => {
     const email = field.email.value;
     const password = field.password.value;
     const confirm_password = field.confirm_password.value;
+
     if (password !== confirm_password) {
       Swal.fire({
         title: "Error!",
@@ -34,12 +36,14 @@ const SignUp = () => {
           emailVerify();
           event.target.reset();
         })
+
         .catch((error) => {
           if (
             error.message === "Firebase: Error (auth/email-already-in-use)."
           ) {
             error.message = "Email is Already use. Try another email";
           }
+
           Swal.fire({
             title: "Error!",
             text: error.message,
@@ -48,16 +52,19 @@ const SignUp = () => {
           });
         });
     }
+
     const emailVerify = () => {
       emailVerification().then((data) => {
         notify();
       });
     };
+
     // Updating user profile
     const userProfile = (fullName) => {
       const profile = {
         displayName: fullName,
       };
+
       UpdateUserProfile(profile)
         .then((data) => {})
         .catch((error) => {});

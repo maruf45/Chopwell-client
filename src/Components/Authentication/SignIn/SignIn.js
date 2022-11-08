@@ -1,15 +1,21 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../UseContext/UseContext";
 
 const SignIn = () => {
   const Swal = require("sweetalert2");
   const { SignIn, googleSignIn } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+
   const signInWithGoogle = () => {
     googleSignIn().then((data) => {
       Swal.fire("Good job!", "Successfully Sign in !", "success");
+      navigate(from, { replace: true });
     });
   };
+
   const FormSubmit = (event) => {
     event.preventDefault();
     const field = event.target;
@@ -19,14 +25,17 @@ const SignIn = () => {
     SignIn(email, password)
       .then((data) => {
         Swal.fire("Good job!", "Successfully Sign in !", "success");
+        navigate(from, { replace: true });
         event.target.reset();
       })
+
       .catch((error) => {
         if (error.message === "Firebase: Error (auth/wrong-password).") {
           error.message = "Your entered password is wrong";
         } else if (error.message === "Firebase: Error (auth/user-not-found).") {
           error.message = "Please Provide a valid email";
         }
+
         Swal.fire({
           title: "Error!",
           text: error.message,
