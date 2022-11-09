@@ -1,22 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { PhotoProvider, PhotoView } from "react-photo-view";
+import React from "react";
+import { Link, useLoaderData } from "react-router-dom";
 import "react-photo-view/dist/react-photo-view.css";
-import { Link } from "react-router-dom";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
-const Services = () => {
-  const [services, setServices] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:7000/services?size=6")
-      .then((res) => res.json())
-      .then((data) => setServices(data));
-  }, []);
-
+const ShortService = () => {
+  const services = useLoaderData();
   return (
     <>
       <div className="services-container container mt-20 mb-40 mx-auto flex-wrap px-2">
         <h1 className="text-4xl text-center  mb-10 ">
-         All Food services
+          My Popular Food services
         </h1>
         <div className=" flex justify-evenly items-center gap-3 flex-wrap">
           {services.map((service) => {
@@ -59,9 +52,17 @@ const Services = () => {
             );
           })}
         </div>
+        <div className="text-center w-full  grid justify-center mt-8">
+          <Link
+            className="text-center mx-auto block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            to={"/services"}
+          >
+            See All
+          </Link>
+        </div>
       </div>
     </>
   );
 };
 
-export default Services;
+export default ShortService;
