@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../UseContext/UseContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from "react-helmet";
 const SignUp = () => {
   const { CreateUser, UpdateUserProfile, emailVerification } =
     useContext(AuthContext);
@@ -72,6 +73,9 @@ const SignUp = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>SignUp - chopwell</title>
+      </Helmet>
       <ToastContainer />
       <div className="form-container sm:px-4 py-2.5 px-2">
         <h1 className="text-center text-2xl pt-2.5 pb-1.5">Sign Up</h1>

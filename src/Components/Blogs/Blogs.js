@@ -1,11 +1,15 @@
 import { Accordion } from "flowbite-react";
 import React from "react";
+import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router-dom";
 
 const Blogs = () => {
   const blogs = useLoaderData();
   return (
     <div className="container mx-auto px-2 sm:px-4 py-2.5">
+    <Helmet>
+        <title>Blogs - chopwell</title>
+    </Helmet>
       <Accordion>
         <Accordion.Panel>
           {blogs.map((blog) => {

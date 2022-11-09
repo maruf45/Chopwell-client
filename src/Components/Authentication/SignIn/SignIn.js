@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
+import { Helmet } from "react-helmet";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../UseContext/UseContext";
 
 const SignIn = () => {
+    
   const Swal = require("sweetalert2");
   const { SignIn, googleSignIn } = useContext(AuthContext);
   const location = useLocation();
@@ -46,6 +48,9 @@ const SignIn = () => {
   };
   return (
     <>
+    <Helmet>
+        <title>SignIn - chopwell</title>
+    </Helmet>
       <div className="container mx-auto sm:px-4 py-2.5 px-2">
         <form onSubmit={FormSubmit}>
           <h1 className="text-center text-2xl pt-2.5 pb-1.5">Sign In</h1>
