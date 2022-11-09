@@ -1,14 +1,13 @@
 import React from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import { NavLink, useLoaderData } from "react-router-dom";
-import Breadcrumb from "../Breadcrumb/Breadcrumb";
 
 const ServicesDetail = () => {
   const { food_type, food_img, food_recipe, food_price, food_icon, _id } =
     useLoaderData();
   return (
     <>
-    <nav
+      <nav
         className="flex justify-center px-5 py-3 text-gray-700 rounded-lg container mx-auto text-center mt-5"
         aria-label="Breadcrumb"
       >
@@ -23,7 +22,7 @@ const ServicesDetail = () => {
               </NavLink>
             </div>
           </li>
-          <li aria-current="page">
+          <li>
             <div className="flex items-center">
               <svg
                 className="w-6 h-6 text-gray-400"
@@ -37,7 +36,24 @@ const ServicesDetail = () => {
                   clipRule="evenodd"
                 ></path>
               </svg>
-              <NavLink to={`/reviews/${_id}`}>Reviews</NavLink>
+              <NavLink to={`/user-reviews/${_id}`}>See Reviews</NavLink>
+            </div>
+          </li>
+          <li>
+            <div className="flex items-center">
+              <svg
+                className="w-6 h-6 text-gray-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
+              <NavLink to={`/reviews/${_id}`}>Add Reviews</NavLink>
             </div>
           </li>
         </ol>

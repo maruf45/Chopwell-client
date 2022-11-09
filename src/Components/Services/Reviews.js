@@ -1,26 +1,29 @@
 import React, { useContext } from "react";
 import { Link, NavLink, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../UseContext/UseContext";
-import Breadcrumb from "../Breadcrumb/Breadcrumb";
 import Loader from "../Loader/Loader";
 
 const Reviews = () => {
   const { user, loading } = useContext(AuthContext);
-  const { _id } = useLoaderData();
+  const { _id, food_type } = useLoaderData();
   const reviewData = (event) => {
     event.preventDefault();
-    const imageKey = '8b6bad17ccb6b5cdfff9af4bad6b37b6';
+    const Swal = require("sweetalert2");
+    const imageKey = "8b6bad17ccb6b5cdfff9af4bad6b37b6";
     console.log(imageKey);
     const url = `https://api.imgbb.com/1/upload?key=${imageKey}`;
     const field = event.target;
     const first_name = field.firstName.value;
     const last_name = field.lastName.value;
-    const fullName = first_name + last_name;
+    const fullName = `${first_name} ${last_name}`;
     const photo = field.photo.files[0];
+    const date = field.date.value;
+    const email = field.email.value;
+    const review = field.review.value;
     const formData = new FormData();
     formData.append("image", photo);
     fetch(url, {
-      method: 'POST',
+      method: "POST",
       body: formData,
     })
       .then((res) => res.json())
@@ -28,12 +31,28 @@ const Reviews = () => {
         console.log(data);
         if (data.success) {
           const img = data.data.url;
-          
+          const userReview = {
+            food: _id,
+            food_type,
+            fullName,
+            img,
+            date,
+            email,
+            review,
+          };
+          fetch("http://localhost:7000/review", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(userReview),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              Swal.fire("Good job!", "Successfully add review!", "success");
+            });
         }
       });
-    const date = field.date.value;
-    const email = field.email.value;
-    const review = field.review.value;
   };
   if (loading) {
     return <Loader />;
@@ -58,7 +77,24 @@ const Reviews = () => {
                   </NavLink>
                 </div>
               </li>
-              <li aria-current="page">
+               <li>
+                <div className="flex items-center">
+                  <svg
+                    className="w-6 h-6 text-gray-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                  <NavLink to={`/user-reviews/${_id}`}> See Reviews</NavLink>
+                </div>
+              </li>
+              <li>
                 <div className="flex items-center">
                   <svg
                     className="w-6 h-6 text-gray-400"
@@ -75,6 +111,7 @@ const Reviews = () => {
                   <NavLink to={`/reviews/${_id}`}>Reviews</NavLink>
                 </div>
               </li>
+             
             </ol>
           </nav>
 
@@ -82,7 +119,7 @@ const Reviews = () => {
             onSubmit={reviewData}
             className="container mx-auto px-2 md:px-4 my-10"
           >
-            <div className="grid gap-6 mb-6 md:grid-cols-2">
+            <div className="grid gap-6 mb-6 md:grid-cols-3">
               <div>
                 <label
                   htmlFor="first_name"
@@ -115,7 +152,24 @@ const Reviews = () => {
                   required
                 />
               </div>
-
+              <div>
+                <label
+                  htmlFor="food_type"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                >
+                  Food Type
+                </label>
+                <input
+                  type="text"
+                  id="food_type"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder=""
+                  defaultValue={food_type}
+                  readOnly={true}
+                  name="foodType"
+                  required
+                />
+              </div>
               <div>
                 <label
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
