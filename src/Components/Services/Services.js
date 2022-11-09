@@ -15,9 +15,7 @@ const Services = () => {
   return (
     <>
       <div className="services-container container mt-20 mb-40 mx-auto flex-wrap px-2">
-        <h1 className="text-4xl text-center  mb-10 ">
-         All Food services
-        </h1>
+        <h1 className="text-4xl text-center  mb-10 ">All Food services</h1>
         <div className=" flex justify-evenly items-center gap-3 flex-wrap">
           {services.map((service) => {
             return (
@@ -28,9 +26,9 @@ const Services = () => {
                 <PhotoProvider>
                   <PhotoView src={service.food_img}>
                     <img
-                      className="p-8 rounded-t-lg"
                       src={service.food_img}
-                      alt="food image"
+                      className="p-8 rounded-t-lg w-screen p-20"
+                      alt=""
                     />
                   </PhotoView>
                 </PhotoProvider>

@@ -21,9 +21,9 @@ const ShortService = () => {
                 <PhotoProvider>
                   <PhotoView src={service.food_img}>
                     <img
-                      className="p-8 rounded-t-lg"
                       src={service.food_img}
-                      alt="food image"
+                      className="p-8 rounded-t-lg w-screen p-20"
+                      alt=""
                     />
                   </PhotoView>
                 </PhotoProvider>
