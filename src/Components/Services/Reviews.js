@@ -7,16 +7,34 @@ import Loader from "../Loader/Loader";
 const Reviews = () => {
   const { user, loading } = useContext(AuthContext);
   const { _id } = useLoaderData();
-  const reviewData = (event ) => {
+  const reviewData = (event) => {
+    event.preventDefault();
+    const imageKey = '8b6bad17ccb6b5cdfff9af4bad6b37b6';
+    console.log(imageKey);
+    const url = `https://api.imgbb.com/1/upload?key=${imageKey}`;
     const field = event.target;
     const first_name = field.firstName.value;
     const last_name = field.lastName.value;
-    const fullName= first_name + last_name;
+    const fullName = first_name + last_name;
+    const photo = field.photo.files[0];
+    const formData = new FormData();
+    formData.append("image", photo);
+    fetch(url, {
+      method: 'POST',
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.success) {
+          const img = data.data.url;
+          
+        }
+      });
     const date = field.date.value;
     const email = field.email.value;
     const review = field.review.value;
-    console.log(fullName, date, email, review);
-  }
+  };
   if (loading) {
     return <Loader />;
   }
@@ -60,7 +78,10 @@ const Reviews = () => {
             </ol>
           </nav>
 
-          <form className="container mx-auto px-2 md:px-4 my-10">
+          <form
+            onSubmit={reviewData}
+            className="container mx-auto px-2 md:px-4 my-10"
+          >
             <div className="grid gap-6 mb-6 md:grid-cols-2">
               <div>
                 <label
@@ -106,19 +127,20 @@ const Reviews = () => {
                   className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                   id="file_input"
                   type="file"
+                  name="photo"
                   required
                 />
               </div>
               <div>
                 <label
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  htmlFor="data"
+                  htmlFor="date"
                 >
                   Choose Current date
                 </label>
                 <input
                   className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                  id="data"
+                  id="date"
                   type="date"
                   name="date"
                   required
