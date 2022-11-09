@@ -5,8 +5,7 @@ const ServicesDetail = () => {
     const {food_type} = useLoaderData();
     return (
         <>
-         ServicesDeatil   
-         {food_type}
+         
         </>
     );
 };
