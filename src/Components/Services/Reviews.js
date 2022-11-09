@@ -4,7 +4,7 @@ import { AuthContext } from "../../UseContext/UseContext";
 import Loader from "../Loader/Loader";
 
 const Reviews = () => {
-  const { user, loading } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const { _id, food_type } = useLoaderData();
   const reviewData = (event) => {
     event.preventDefault();
@@ -54,9 +54,6 @@ const Reviews = () => {
         }
       });
   };
-  if (loading) {
-    return <Loader />;
-  }
 
   return (
     <>

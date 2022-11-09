@@ -25,7 +25,7 @@ const SeeReviews = () => {
                     </div>
                     <div class="flex-1 min-w-0">
                       <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                        Food Type: {u.food_type}
+                       Name: {u.fullName}
                       </p>
                       <p class="text-sm text-gray-500 truncate dark:text-gray-400">
                        email: {u.email}
