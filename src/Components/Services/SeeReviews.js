@@ -39,9 +39,6 @@ const SeeReviews = () => {
                       <p className="text-sm pt-1 pb-1.5 text-gray-500 truncate dark:text-gray-400">
                         Review: {u.review}
                       </p>
-                      <p className="text-sm text-gray-500 pb-2 truncate dark:text-gray-400">
-                        Date: {u.date}
-                      </p>
                     </div>
                   </div>
                 </li>
