@@ -39,7 +39,7 @@ const Reviews = () => {
             email,
             review,
           };
-          fetch("https://service-servers.vercel.app//review", {
+          fetch("https://services-server-2ip03zcd9-maruff.vercel.app/review", {
             method: "POST",
             headers: {
               "content-type": "application/json",

@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("https://service-servers.vercel.app//services"),
+        loader: () => fetch("https://services-server-2ip03zcd9-maruff.vercel.app/services"),
       },
       { path: "/services", element: <Services /> },
       { path: "/sign-up", element: <SignUp /> },
@@ -30,30 +30,30 @@ export const router = createBrowserRouter([
         path: "/update-review/:id",
         element: <UpdataReviews />,
         loader: ({ params }) =>
-          fetch(`https://service-servers.vercel.app//user/update-review/${params.id}`),
+          fetch(`https://services-server-2ip03zcd9-maruff.vercel.app/user/update-review/${params.id}`),
       },
       {
         path: "/reviews/:id",
         element: <Reviews />,
         loader: ({ params }) =>
-          fetch(`https://service-servers.vercel.app//service/${params.id}`),
+          fetch(`https://services-server-2ip03zcd9-maruff.vercel.app/service/${params.id}`),
       },
       {
         path: "/user-reviews/:id",
         element: <SeeReviews />,
         loader: ({ params }) =>
-          fetch(`https://service-servers.vercel.app//user/reviews/${params.id}`),
+          fetch(`https://services-server-2ip03zcd9-maruff.vercel.app/user/reviews/${params.id}`),
       },
       {
         path: "/service/:id",
         element: <ServicesDetail />,
         loader: ({ params }) =>
-          fetch(`https://service-servers.vercel.app//service/${params.id}`),
+          fetch(`https://services-server-2ip03zcd9-maruff.vercel.app/service/${params.id}`),
       },
       {
         path: "/blogs",
         element: <Blogs />,
-        loader: () => fetch("https://service-servers.vercel.app//blogs"),
+        loader: () => fetch("https://services-server-2ip03zcd9-maruff.vercel.app/blogs"),
       },
       {
         path: "/my-reviews",

@@ -28,7 +28,7 @@ const SignIn = () => {
         const userAddress = {
           email: user?.email,
         };
-        fetch("https://service-servers.vercel.app//jwt", {
+        fetch("https://services-server-2ip03zcd9-maruff.vercel.app/jwt", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(userAddress),

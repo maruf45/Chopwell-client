@@ -8,7 +8,7 @@ const MyReviews = () => {
   const { user, singOut } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    fetch(`https://service-servers.vercel.app//my-reviews?email=${user?.email}`, {
+    fetch(`https://services-server-2ip03zcd9-maruff.vercel.app/my-reviews?email=${user?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -25,7 +25,7 @@ const MyReviews = () => {
   }, [user?.email, singOut]);
   const notify = () => toast.success("Successfully Delete");
   const handleDelete = (id) => {
-    fetch(`https://service-servers.vercel.app//my-reviews/${id}`, {
+    fetch(`https://services-server-2ip03zcd9-maruff.vercel.app/my-reviews/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

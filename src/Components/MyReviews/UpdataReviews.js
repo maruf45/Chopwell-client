@@ -8,7 +8,7 @@ const UpdataReviews = () => {
   const Swal = require("sweetalert2");
   const handleUpdateUser = (event) => {
     event.preventDefault();
-    fetch(`https://service-servers.vercel.app//user/profile/update/${data._id}`, {
+    fetch(`https://services-server-2ip03zcd9-maruff.vercel.app/user/profile/update/${data._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
