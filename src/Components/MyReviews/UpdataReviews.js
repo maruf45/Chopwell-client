@@ -37,7 +37,7 @@ const UpdataReviews = () => {
       >
          <div className="mb-6">
           <label
-           htmlhtmlFor="default-input"
+           htmlFor="default-input"
            className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             Full Name
@@ -53,7 +53,7 @@ const UpdataReviews = () => {
         </div>
         <div className="mb-6">
           <label
-           htmlhtmlFor="default-input"
+           htmlFor="default-input"
            className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             Date
@@ -69,7 +69,7 @@ const UpdataReviews = () => {
         </div>
         <div className="mb-6">
           <label
-           htmlhtmlFor="default-input"
+           htmlFor="default-input"
            className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             Write Review

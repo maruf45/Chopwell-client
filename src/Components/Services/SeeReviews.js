@@ -12,7 +12,10 @@ const SeeReviews = () => {
           </h5>
         </div>
         <div className="flow-root">
-          <ul role="list" className="divide-y divide-gray-200 dark:divide-gray-700">
+          <ul
+            role="list"
+            className="divide-y divide-gray-200 dark:divide-gray-700"
+          >
             {users.map((u) => {
               return (
                 <li className="pt-3 pb-0 sm:pt-4" key={u._id}>
@@ -25,16 +28,19 @@ const SeeReviews = () => {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                       Name: {u.fullName}
+                        Name: {u.fullName}
                       </p>
                       <p className="text-sm text-gray-500 pt-1 truncate dark:text-gray-400">
-                       Email: {u.email}
+                        Email: {u.email}
+                      </p>
+                      <p className="text-sm text-gray-500 pt-1 truncate dark:text-gray-400">
+                        Food Name: {u.food_type}
                       </p>
                       <p className="text-sm pt-1 pb-1.5 text-gray-500 truncate dark:text-gray-400">
-                       Review: {u.review}
+                        Review: {u.review}
                       </p>
                       <p className="text-sm text-gray-500 pb-2 truncate dark:text-gray-400">
-                       Date: {u.date}
+                        Date: {u.date}
                       </p>
                     </div>
                   </div>

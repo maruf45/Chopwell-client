@@ -55,7 +55,7 @@ const AddService = () => {
       >
         <div className="mb-6">
           <label
-            htmlhtmlFor="default-input"
+            htmlFor="default-input"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             Service Name
@@ -71,7 +71,7 @@ const AddService = () => {
         </div>
         <div className="mb-6">
           <label
-            htmlhtmlFor="default-input"
+            htmlFor="default-input"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             Price
@@ -88,7 +88,7 @@ const AddService = () => {
         <div className="mb-6">
           <label
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            htmlhtmlFor="file_input"
+            htmlFor="file_input"
           >
             Service Picture
           </label>
@@ -102,7 +102,7 @@ const AddService = () => {
         </div>
         <div className="mb-6">
           <label
-            htmlhtmlFor="default-input"
+            htmlFor="default-input"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             Service Description

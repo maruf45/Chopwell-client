@@ -6,7 +6,7 @@ import { useLoaderData } from "react-router-dom";
 const Blogs = () => {
   const blogs = useLoaderData();
   return (
-    <div className="container mx-auto px-2 sm:px-4 py-2.5">
+    <div className="container mx-auto px-2 sm:px-4 py-2.5 my-20 mt-10">
     <Helmet>
         <title>Blogs - chopwell</title>
     </Helmet>

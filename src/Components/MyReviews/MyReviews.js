@@ -5,15 +5,24 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 const MyReviews = () => {
-  const { user } = useContext(AuthContext);
+  const { user, singOut } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:7000/my-reviews?email=${user.email}`)
-      .then((res) => res.json())
+    fetch(`http://localhost:7000/my-reviews?email=${user?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+         return singOut();
+        }
+        return res.json();
+      })
       .then((data) => {
         setUsers(data);
       });
-  }, [user.email]);
+  }, [user?.email, singOut]);
   const notify = () => toast.success("Successfully Delete");
   const handleDelete = (id) => {
     fetch(`http://localhost:7000/my-reviews/${id}`, {
@@ -61,6 +70,9 @@ const MyReviews = () => {
                         </p>
                         <p className="text-sm text-gray-500 pt-1 truncate dark:text-gray-400">
                           Email: {u.email}
+                        </p>
+                        <p className="text-sm text-gray-500 pt-1 truncate dark:text-gray-400">
+                          Food Name: {u.food_type}
                         </p>
                         <p className="text-sm pt-1 pb-1.5 text-gray-500 truncate dark:text-gray-400">
                           Review: {u.review}

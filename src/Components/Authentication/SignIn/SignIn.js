@@ -1,4 +1,3 @@
-import { Button, Card, Checkbox, Label, TextInput } from "flowbite-react";
 import React, { useContext } from "react";
 import { Helmet } from "react-helmet";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -6,13 +5,13 @@ import { AuthContext } from "../../../UseContext/UseContext";
 
 const SignIn = () => {
   const Swal = require("sweetalert2");
-  const { SignIn, googleSignIn } = useContext(AuthContext);
+  const { user, SignIn, github } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
-
-  const signInWithGoogle = () => {
-    googleSignIn().then((data) => {
+  console.log(user);
+  const signInWithGitHub = () => {
+    github().then((data) => {
       Swal.fire("Good job!", "Successfully Sign in !", "success");
       navigate(from, { replace: true });
     });
@@ -23,9 +22,23 @@ const SignIn = () => {
     const field = event.target;
     const email = field.email.value;
     const password = field.password.value;
-
     SignIn(email, password)
       .then((data) => {
+        const user = data.user;
+        const userAddress = {
+          email: user?.email,
+        };
+        fetch("http://localhost:7000/jwt", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(userAddress),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("token", data.token);
+            navigate(from, { replace: true });
+          });
+        console.log(userAddress);
         Swal.fire("Good job!", "Successfully Sign in !", "success");
         navigate(from, { replace: true });
         event.target.reset();
@@ -55,11 +68,11 @@ const SignIn = () => {
         <div className="p-4 w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
           <form onSubmit={FormSubmit} className="space-y-6">
             <h5 className="text-xl text-center font-medium text-gray-900 dark:text-white">
-              Sign in 
+              Sign in
             </h5>
             <div>
               <label
-                htmlhtmlFor="email"
+                htmlFor="email"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
                 Your email
@@ -75,7 +88,7 @@ const SignIn = () => {
             </div>
             <div>
               <label
-                htmlhtmlFor="password"
+                htmlFor="password"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
                 Your password
@@ -100,7 +113,7 @@ const SignIn = () => {
                   />
                 </div>
                 <label
-                  htmlhtmlFor="remember"
+                  htmlFor="remember"
                   className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Remember me
@@ -121,14 +134,10 @@ const SignIn = () => {
             </button>
           </form>
           <button
-            onClick={signInWithGoogle}
+            onClick={signInWithGitHub}
             className="flex items-center w-full  justify-center  text-white bg-blue-700 hover:bg-blue-800 mt-5 mb-4 py-1 rounded-lg  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            <img
-              src="https://img.icons8.com/fluency/36/google-logo.png"
-              alt=""
-            />
-            Google Login
+            GitHub Login
           </button>
           <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
             Not registered?{" "}
