@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link, NavLink, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../UseContext/UseContext";
-import Loader from "../Loader/Loader";
+
 
 const Reviews = () => {
   const { user } = useContext(AuthContext);
@@ -49,6 +49,7 @@ const Reviews = () => {
           })
             .then((res) => res.json())
             .then((data) => {
+              field.reset();
               Swal.fire("Good job!", "Successfully add review!", "success");
             });
         }
