@@ -85,7 +85,7 @@ const SignUp = () => {
             </h5>
             <div>
               <label
-                htmlFor="first_name"
+                htmlhtmlFor="first_name"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
                 First Name
@@ -101,7 +101,7 @@ const SignUp = () => {
             </div>
             <div>
               <label
-                htmlFor="last_name"
+                htmlhtmlFor="last_name"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
                 Last Name
@@ -117,7 +117,7 @@ const SignUp = () => {
             </div>
             <div>
               <label
-                htmlFor="email"
+                htmlhtmlFor="email"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
                 Your email
@@ -133,7 +133,7 @@ const SignUp = () => {
             </div>
             <div>
               <label
-                htmlFor="password"
+                htmlhtmlFor="password"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
                 Your password
@@ -149,7 +149,7 @@ const SignUp = () => {
             </div>
             <div>
               <label
-                htmlFor="confirm_password"
+                htmlhtmlFor="confirm_password"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
                 Confirm Password 
@@ -175,7 +175,7 @@ const SignUp = () => {
                   />
                 </div>
                 <label
-                  htmlFor="remember"
+                  htmlhtmlFor="remember"
                   className="ml-2 text-sm font-medium text-blue-700 hover:underline dark:text-gray-300"
                 >
                    Terms And Condition

@@ -119,7 +119,7 @@ const Reviews = () => {
             <div className="grid gap-6 mb-6 md:grid-cols-3">
               <div>
                 <label
-                  htmlFor="first_name"
+                  htmlhtmlFor="first_name"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   First name
@@ -135,7 +135,7 @@ const Reviews = () => {
               </div>
               <div>
                 <label
-                  htmlFor="last_name"
+                  htmlhtmlFor="last_name"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Last name
@@ -151,7 +151,7 @@ const Reviews = () => {
               </div>
               <div>
                 <label
-                  htmlFor="food_type"
+                  htmlhtmlFor="food_type"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Food Type
@@ -170,7 +170,7 @@ const Reviews = () => {
               <div>
                 <label
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  htmlFor="file_input"
+                  htmlhtmlFor="file_input"
                 >
                   Upload Photo
                 </label>
@@ -185,7 +185,7 @@ const Reviews = () => {
               <div>
                 <label
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  htmlFor="date"
+                  htmlhtmlFor="date"
                 >
                   Choose Current date
                 </label>
@@ -200,7 +200,7 @@ const Reviews = () => {
             </div>
             <div className="mb-6">
               <label
-                htmlFor="email"
+                htmlhtmlFor="email"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
                 Email address
@@ -217,7 +217,7 @@ const Reviews = () => {
             </div>
             <div className="mb-6">
               <label
-                htmlFor="review"
+                htmlhtmlFor="review"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
                 Write Review

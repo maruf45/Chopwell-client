@@ -59,7 +59,7 @@ const SignIn = () => {
             </h5>
             <div>
               <label
-                htmlFor="email"
+                htmlhtmlFor="email"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
                 Your email
@@ -75,7 +75,7 @@ const SignIn = () => {
             </div>
             <div>
               <label
-                htmlFor="password"
+                htmlhtmlFor="password"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
                 Your password
@@ -100,7 +100,7 @@ const SignIn = () => {
                   />
                 </div>
                 <label
-                  htmlFor="remember"
+                  htmlhtmlFor="remember"
                   className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Remember me
