@@ -1,6 +1,6 @@
 # Chopwell Food delivery website
 
-live site link [Create React App](https://github.com/facebook/create-react-app).
+live site link [CHOPWELL](https://github.com/facebook/create-react-app).
 
 ## What is use this project
 
