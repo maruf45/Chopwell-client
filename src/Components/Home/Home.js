@@ -1,6 +1,7 @@
 import React from "react";
 import About from "../About/About";
 import ShortService from "../Services/ShortService";
+import Subscribe from "../Subscribe./Subscribe";
 import "./Home.css";
 
 const Home = () => {
@@ -12,8 +13,9 @@ const Home = () => {
           <h1 className="text-6xl">FOOD DELIVERY & SERVICE</h1>
         </div>
       </div>
-      <About/>
+      <About />
       <ShortService />
+      <Subscribe />
     </>
   );
 };
