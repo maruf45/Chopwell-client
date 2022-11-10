@@ -1,6 +1,6 @@
 # Chopwell Food delivery website
 
-## live site link [CHOPWELL](https://github.com/facebook/create-react-app)
+## live site link [CHOPWELL](https://thriving-rabanadas-313284.netlify.app/)
 
 ## What is use this project
 
