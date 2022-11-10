@@ -181,12 +181,6 @@ const SignUp = () => {
                    Terms And Condition
                 </label>
               </div>
-              <Link
-                to="#"
-                className="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500"
-              >
-                Lost Password?
-              </Link>
             </div>
             <button
               type="submit"

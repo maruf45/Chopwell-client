@@ -19,14 +19,12 @@ const MyReviews = () => {
     fetch(`http://localhost:7000/my-reviews/${id}`, {
       method: "DELETE",
     })
-   
       .then((res) => res.json())
       .then((data) => {
         const remainingUser = users.filter((user) => user._id !== id);
         setUsers(remainingUser);
         notify();
       });
-      
   };
   return (
     <div>
@@ -46,29 +44,33 @@ const MyReviews = () => {
             className="divide-y divide-gray-200 dark:divide-gray-700"
           >
             {users.map((u) => {
-              console.log(u?.email)
-              return (
-                u?.email ?
+              console.log(u?.email);
+              return u?.email ? (
                 <li className="pt-3 pb-0 sm:pt-4" key={u._id}>
-                  <div className="flex items-center space-x-4">
-                    <div className="flex-shrink-0">
-                      <img className="w-8 h-8 rounded-full" src={u.img} />
+                  <div className="flex items-center justify-between space-x-4">
+                    <div className="flex items-center  space-x-4">
+                      <div className="flex-shrink-0">
+                        <img
+                          className="w-[100px] h-[100px] object-cover m-5 rounded-full"
+                          src={u.img}
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
+                          Name: {u.fullName}
+                        </p>
+                        <p className="text-sm text-gray-500 pt-1 truncate dark:text-gray-400">
+                          Email: {u.email}
+                        </p>
+                        <p className="text-sm pt-1 pb-1.5 text-gray-500 truncate dark:text-gray-400">
+                          Review: {u.review}
+                        </p>
+                        <p className="text-sm text-gray-500 pb-2 truncate dark:text-gray-400">
+                          Date: {u.date}
+                        </p>
+                      </div>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                        Name: {u.fullName}
-                      </p>
-                      <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                        email: {u.email}
-                      </p>
-                      <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                        Review: {u.review.slice(0, 100)}
-                      </p>
-                      <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                        Date: {u.date}
-                      </p>
-                    </div>
-                    <div>
+                    <div className="flex">
                       <Link to={`/update-review/${u._id}`} className="mr-2">
                         <img
                           src="https://img.icons8.com/color-glass/30/pencil.png"
@@ -84,7 +86,7 @@ const MyReviews = () => {
                     </div>
                   </div>
                 </li>
-                :
+              ) : (
                 <li>
                   <p>No reviews were added</p>
                 </li>

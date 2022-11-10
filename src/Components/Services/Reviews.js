@@ -10,7 +10,6 @@ const Reviews = () => {
     event.preventDefault();
     const Swal = require("sweetalert2");
     const imageKey = "8b6bad17ccb6b5cdfff9af4bad6b37b6";
-    console.log(imageKey);
     const url = `https://api.imgbb.com/1/upload?key=${imageKey}`;
     const field = event.target;
     const first_name = field.firstName.value;

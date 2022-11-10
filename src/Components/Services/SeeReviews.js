@@ -19,7 +19,7 @@ const SeeReviews = () => {
                   <div className="flex items-center space-x-4">
                     <div className="flex-shrink-0">
                       <img
-                        className="w-8 h-8 rounded-full"
+                        className="w-[100px] h-[100px] object-cover m-5 rounded-full"
                         src={u.img}
                       />
                     </div>
@@ -27,10 +27,13 @@ const SeeReviews = () => {
                       <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
                        Name: {u.fullName}
                       </p>
-                      <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                       email: {u.email}
+                      <p className="text-sm text-gray-500 pt-1 truncate dark:text-gray-400">
+                       Email: {u.email}
                       </p>
-                      <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                      <p className="text-sm pt-1 pb-1.5 text-gray-500 truncate dark:text-gray-400">
+                       Review: {u.review}
+                      </p>
+                      <p className="text-sm text-gray-500 pb-2 truncate dark:text-gray-400">
                        Date: {u.date}
                       </p>
                     </div>

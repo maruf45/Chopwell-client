@@ -1,5 +1,6 @@
 .home-container{
-    background: url('https://i.ibb.co/4KJncQh/banner.jpg');
+    background: url('https://i.ibb.co/4KJncQh/banner.jpg') no-repeat center;
+    background-image: cover;
 }
 .home-container .text-content{
     font-family: 'ubuntu', sans-serif;

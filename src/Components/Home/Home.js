@@ -1,4 +1,5 @@
 import React from "react";
+import About from "../About/About";
 import ShortService from "../Services/ShortService";
 import "./Home.css";
 
@@ -11,6 +12,7 @@ const Home = () => {
           <h1 className="text-6xl">FOOD DELIVERY & SERVICE</h1>
         </div>
       </div>
+      <About/>
       <ShortService />
     </>
   );
