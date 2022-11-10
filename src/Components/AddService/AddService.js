@@ -29,7 +29,7 @@ const AddService = () => {
             food_price: price,
             food_recipe: serviceDescription,
           };
-          fetch("https://server-side-maruf45-1cwj1xzji-server-site-885.vercel.app/services", {
+          fetch("https://service-servers.vercel.app//services", {
             method: "POST",
             headers: {
               "content-type": "application/json",

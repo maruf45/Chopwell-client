@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("https://server-side-maruf45-1cwj1xzji-server-site-885.vercel.app/services"),
+        loader: () => fetch("https://service-servers.vercel.app//services"),
       },
       { path: "/services", element: <Services /> },
       { path: "/sign-up", element: <SignUp /> },
@@ -30,30 +30,30 @@ export const router = createBrowserRouter([
         path: "/update-review/:id",
         element: <UpdataReviews />,
         loader: ({ params }) =>
-          fetch(`https://server-side-maruf45-1cwj1xzji-server-site-885.vercel.app/user/update-review/${params.id}`),
+          fetch(`https://service-servers.vercel.app//user/update-review/${params.id}`),
       },
       {
         path: "/reviews/:id",
         element: <Reviews />,
         loader: ({ params }) =>
-          fetch(`https://server-side-maruf45-1cwj1xzji-server-site-885.vercel.app/service/${params.id}`),
+          fetch(`https://service-servers.vercel.app//service/${params.id}`),
       },
       {
         path: "/user-reviews/:id",
         element: <SeeReviews />,
         loader: ({ params }) =>
-          fetch(`https://server-side-maruf45-1cwj1xzji-server-site-885.vercel.app/user/reviews/${params.id}`),
+          fetch(`https://service-servers.vercel.app//user/reviews/${params.id}`),
       },
       {
         path: "/service/:id",
         element: <ServicesDetail />,
         loader: ({ params }) =>
-          fetch(`https://server-side-maruf45-1cwj1xzji-server-site-885.vercel.app/service/${params.id}`),
+          fetch(`https://service-servers.vercel.app//service/${params.id}`),
       },
       {
         path: "/blogs",
         element: <Blogs />,
-        loader: () => fetch("https://server-side-maruf45-1cwj1xzji-server-site-885.vercel.app/blogs"),
+        loader: () => fetch("https://service-servers.vercel.app//blogs"),
       },
       {
         path: "/my-reviews",
