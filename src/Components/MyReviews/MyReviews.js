@@ -8,7 +8,7 @@ const MyReviews = () => {
   const { user, singOut } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:7000/my-reviews?email=${user?.email}`, {
+    fetch(`https://server-side-maruf45-1cwj1xzji-server-site-885.vercel.app/my-reviews?email=${user?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -25,7 +25,7 @@ const MyReviews = () => {
   }, [user?.email, singOut]);
   const notify = () => toast.success("Successfully Delete");
   const handleDelete = (id) => {
-    fetch(`http://localhost:7000/my-reviews/${id}`, {
+    fetch(`https://server-side-maruf45-1cwj1xzji-server-site-885.vercel.app/my-reviews/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -75,16 +75,16 @@ const MyReviews = () => {
                         </div>
                         <div className="flex-1 min-w-0">
                           <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                            Name: {u.fullName}
+                            <span className="font-bold">Name</span>: {u.fullName}
                           </p>
                           <p className="text-sm text-gray-500 pt-1 truncate dark:text-gray-400">
-                            Email: {u.email}
+                          <span className="font-bold">Email: </span> {u.email}
                           </p>
                           <p className="text-sm text-gray-500 pt-1 truncate dark:text-gray-400">
-                            Food Name: {u.food_type}
+                          <span className="font-bold">Food Name :</span>{u.food_type}
                           </p>
                           <p className="text-sm pt-1 pb-1.5 text-gray-500 truncate dark:text-gray-400">
-                            Review: {u.review}
+                          <span className="font-bold">Review :</span> {u.review}
                           </p>
                         </div>
                       </div>
